@@ -1,26 +1,33 @@
 [ignore]
 
-<PROJECT_ROOT>/examples/.*
+<PROJECT_ROOT>/fixtures/.*
 <PROJECT_ROOT>/build/.*
+<PROJECT_ROOT>/scripts/bench/.*
+
+# These shims are copied into external projects:
+<PROJECT_ROOT>/scripts/rollup/shims/facebook-www/.*
+<PROJECT_ROOT>/scripts/rollup/shims/react-native/.*
+
+# Note: intentionally *don't* ignore /scripts/rollup/shims/rollup/
+# because it is part of the build and isn't external.
+
 <PROJECT_ROOT>/.*/node_modules/y18n/.*
+<PROJECT_ROOT>/node_modules/chrome-devtools-frontend/.*
+<PROJECT_ROOT>/node_modules/devtools-timeline-model/.*
+<PROJECT_ROOT>/node_modules/create-react-class/.*
 <PROJECT_ROOT>/.*/__mocks__/.*
 <PROJECT_ROOT>/.*/__tests__/.*
-
-# Ignore Docs
-<PROJECT_ROOT>/docs/.*
-<PROJECT_ROOT>/.*/docs/.*
 
 [include]
 
 [libs]
 ./node_modules/fbjs/flow/lib/dev.js
-./flow
+./scripts/flow
 
 [options]
-module.system=haste
-
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
+unsafe.enable_getters_and_setters=true
 
 munge_underscores=false
 
@@ -29,10 +36,10 @@ suppress_type=$FlowFixMe
 suppress_type=$FixMe
 suppress_type=$FlowExpectedError
 
-suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(>=0\\.\\(3[0-3]\\|[1-2][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*www[a-z,_]*\\)?)\\)
-suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(3[0-3]\\|[1-2][0-9]\\|[0-9]\\).[0-9]\\)? *\\(site=[a-z,_]*www[a-z,_]*\\)?)\\)?:? #[0-9]+
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 [version]
-^0.37.0
+^0.57.3
